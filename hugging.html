@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Incident Reporting System</title>
+  <link rel="stylesheet" href="hugging-style.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* New CSS for Voice Input Button */
+    .voice-input-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+    }
+    .voice-input-container input {
+        flex: 1;
+    }
+    .voice-button {
+        background: transparent;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: #3a8d4f;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo" style="color: #551A8B;">Tensor Titans</a>
+        <div class="mobile-icon" onclick="toggleMobileMenu()">
+          <i class="fa fa-bars"></i>
+        </div>
+        <ul class="nav-items">
+          <li><a href="#about" class="nav-item">About</a></li>
+          <li><a href="#projects" class="nav-item">Models</a></li>  
+          <li><a href="https://example.com" target="_blank" class="nav-item">Report Incident</a></li>
+          <li><a href="https://example.com" target="_blank" class="nav-item">Track Location</a></li>
+          <li><a href="https://chatgpt.com" target="_blank" class="nav-item">ChatBot</a></li>
+        </ul>
+        <div class="button-container">
+          <a href="https://drive.google.com/file/d/1yHSKg7waygaev_fgneCotIVIrh3Y5H0b/view" target="_blank" class="btn" style="color: #ffffff;border:2px solid #d48b8b;background-color: #fb0000;">Emergency SOS</a>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" class="mobile-menu-link" onclick="toggleMobileMenu()">About</a>
+        <a href="#skills" class="mobile-menu-link" onclick="toggleMobileMenu()">Skills</a>
+        <a href="#experience" class="mobile-menu-link" onclick="toggleMobileMenu()">Experience</a>
+        <a href="#projects" class="mobile-menu-link" onclick="toggleMobileMenu()">Projects</a>
+        <a href="#education" class="mobile-menu-link" onclick="toggleMobileMenu()">Education</a>
+        <a href="https://github.com/1543siddhant" target="_blank" class="btn mobile-btn">Github</a>
+        <a href="https://www.linkedin.com/in/siddhant-patil-04587525b/" target="_blank" class="btn mobile-btn">LinkedIn</a>
+        <a href="https://drive.google.com/file/d/1yHSKg7waygaev_fgneCotIVIrh3Y5H0b/view" target="_blank" class="btn mobile-btn">Resume</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1><strong>Incident Reporting System</strong></h1>
+    <br>
+    <p><b>Fill in the details below to generate an incident report</b></p>
+    <br>
+    <!-- Incident Form -->
+    <form id="incidentForm">
+      <label for="incidentType">Incident Type:</label>
+      <div class="voice-input-container">
+        <input type="text" id="incidentType" name="incidentType" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('incidentType')">🎤</button>
+      </div>
+
+      <label for="location">Location:</label>
+      <div class="voice-input-container">
+        <input type="text" id="location" name="location" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('location')">🎤</button>
+      </div>
+
+      <label for="dateOfIncident">Date of Incident:</label>
+      <div class="voice-input-container">
+        <input type="date" id="dateOfIncident" name="dateOfIncident" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('dateOfIncident')">🎤</button>
+      </div>
+
+      <label for="victimname">Victim's Name:</label>
+      <div class="voice-input-container">
+        <input type="text" id="victimname" name="victimname" placeholder="Type NO if unknown" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('victimname')">🎤</button>
+      </div>
+
+      <label for="victimage">Victim's Age:</label>
+      <div class="voice-input-container">
+        <input type="text" id="victimage" name="victimage" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('victimage')">🎤</button>
+      </div>
+
+      <label for="phydescriptionvictim">Physical Description of Victim:</label>
+      <div class="voice-input-container">
+        <input type="text" id="phydescriptionvictim" name="phydescriptionvictim" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('phydescriptionvictim')">🎤</button>
+      </div>
+
+      <label for="injuriesorharm">Injuries or Harm Suffered:</label>
+      <div class="voice-input-container">
+        <input type="text" id="injuriesorharm" name="injuriesorharm" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('injuriesorharm')">🎤</button>
+      </div>
+
+      <label for="accusedname">Name of the Accused:</label>
+      <div class="voice-input-container">
+        <input type="text" id="accusedname" name="accusedname" placeholder="Type NA if unknown" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('accusedname')">🎤</button>
+      </div>
+
+      <label for="accuseddescription">Description of Accused:</label>
+      <div class="voice-input-container">
+        <input type="text" id="accuseddescription" name="accuseddescription" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('accuseddescription')">🎤</button>
+      </div>
+
+      <label for="eventsequence">Sequence of Events:</label>
+      <div class="voice-input-container">
+        <input type="text" id="eventsequence" name="eventsequence" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('eventsequence')">🎤</button>
+      </div>
+
+      <label for="witnesses">Witnesses:</label>
+      <div class="voice-input-container">
+        <input type="text" id="witnesses" name="witnesses" placeholder="Type NA if none" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('witnesses')">🎤</button>
+      </div>
+
+      <label for="laws">Relevant Laws:</label>
+      <div class="voice-input-container">
+        <input type="text" id="laws" name="laws" placeholder="Use ChatBot for legal info" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('laws')">🎤</button>
+      </div>
+
+      <label for="evidence">Supporting Evidence:</label>
+      <div class="voice-input-container">
+        <input type="text" id="evidence" name="evidence" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('evidence')">🎤</button>
+      </div>
+
+      <label for="complainantdetails">Complainant’s Name:</label>
+      <div class="voice-input-container">
+        <input type="text" id="complainantdetails" name="complainantdetails" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('complainantdetails')">🎤</button>
+      </div>
+
+      <label for="complainantnumber">Complainant’s Contact:</label>
+      <div class="voice-input-container">
+        <input type="text" id="complainantnumber" name="complainantnumber" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('complainantnumber')">🎤</button>
+      </div>
+
+      <label for="dateandtimeofreport">Date and Time of Report:</label>
+      <div class="voice-input-container">
+        <input type="text" id="dateandtimeofreport" name="dateandtimeofreport" required />
+        <button type="button" class="voice-button" onclick="startVoiceRecognition('dateandtimeofreport')">🎤</button>
+      </div>
+
+      <button type="submit">Generate Report</button>
+    </form>
+
+    <!-- Generated Report -->
+    <div id="generatedReport" style="color: black;">
+      <h2>Generated Report:</h2>
+      <div id="reportContent" contenteditable="true"></div>
+      <div class="button-group">
+        <button id="getHelpButton" style="display: none;">Get Necessary Help</button>
+        <button id="confirmReportButton">Confirm Report & Send</button>
+        <button id="gpsLocationButton">GPS Location</button>
+        <button id="addImageButton">Add Images</button>
+        <button id="downloadPDFButton">Download PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/27/14/20250127140138-4ECR7WEA.json" target="_blank" class="circle-button"></a>
+  <div onclick="fill()">Fill all demo</div>
+
+  <script>
+    function toggleMobileMenu() {
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu.style.display === "flex") {
+        mobileMenu.style.display = "none";
+      } else {
+        mobileMenu.style.display = "flex";
+        mobileMenu.style.flexDirection = "column";
+      }
+    }
+
+    function startVoiceRecognition(inputId) {
+      if ('webkitSpeechRecognition' in window) {
+        var recognition = new webkitSpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.onresult = function(event) {
+          document.getElementById(inputId).value = event.results[0][0].transcript;
+        };
+        recognition.start();
+      } else {
+        alert('Speech recognition is not supported in this browser.');
+      }
+    }
+    function fill(){
+    console.log("fillalldemo function called");
+        document.getElementById('incidentType').value = "Child labor";
+        document.getElementById('location').value = "Delhi";
+        document.getElementById('dateOfIncident').value = "2023-10-10";
+        document.getElementById('victimname').value = "Rahul Kumar";
+        document.getElementById('victimage').value = "12";
+        document.getElementById('phydescriptionvictim').value = "Small boy, thin build, wearing a school uniform.";
+        document.getElementById('injuriesorharm').value = "No visible injuries";
+        document.getElementById('accusedname').value = "Factory Owner";
+        document.getElementById('accuseddescription').value = "Middle-aged male, in a formal suit.";
+        document.getElementById('eventsequence').value = "Child found working in a factory";
+        document.getElementById('witnesses').value = "People passing by the shop";
+        document.getElementById('laws').value = "Child Labor (Prohibition and Regulation) Act, 1986";
+        document.getElementById('evidence').value = "Photographs of the workplace, testimonies.";
+        document.getElementById('complainantdetails').value = "Ms. Sharma, NGO representative";
+        document.getElementById('complainantnumber').value = "+91-9876543210";
+        document.getElementById('dateandtimeofreport').value = "2023-10-15 14:30";
+    
+}
+  </script>
+  <script type="module" src="hugging-script.js"></script>
+  <script src="js/searchreport-hamburger.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>
